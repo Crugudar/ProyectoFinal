@@ -1,0 +1,26 @@
+.upcontact{
+    display: flex;
+    justify-content: space-around;
+    background-color: #3b0d11;
+    color: #fff3d5;
+}
+.icons{
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.cornflower{
+    color: #fff3d5;
+}
+
+.telephone{
+    margin:auto;
+}
+
+#logo-transparent{
+    width: 15rem;
+    margin:2rem;
+    
+}

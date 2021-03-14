@@ -1,0 +1,42 @@
+<div class="container">
+  <form (ngSubmit)="onSubmit()" [formGroup]="form">
+
+    
+      <label>Nombre completo</label><br>
+      <input class="form-control" type="text" matInput formControlName="name" placeholder="Juanito Perez">
+      <p *ngIf="nameField.hasError('invalidname')">Por favor introduce un nombre con un formato válido</p>
+      <p *ngIf="nameField.hasError('required') && nameField.touched">El campo nombre es <strong>obligatorio</strong></p>
+    <br>
+
+    <label for="email">Email</label><br>
+    <input class="form-control" matInput formControlName="email" type="email" name="email" placeholder="test@test.com"><br>
+    <p class="error-msg" *ngIf="emailField.hasError('required') && emailField.touched">El campo email es obligatorio</p>
+    <p class="error-msg" *ngIf="emailField.hasError('email')">Por favor, introduce un formato de email válido</p>
+
+    
+    <label for="phone">Teléfono</label><br>
+    <input class="form-control" matInput formControlName="phone" type="tel" name="phone" placeholder="666333222"><br>
+    <p class="error-msg" *ngIf="phoneField.hasError('required') && phoneField.touched">El campo teléfono es obligatorio</p>
+    <p class="error-msg" *ngIf="phoneField.hasError('pattern')">Por favor, introduce un formato de teléfono válido</p>
+
+    <!-- <label for="especialidad">Especialidad</label> <br>
+    <select class="form-control" matInput formControlName="especialidad" name="especialidad" placeholder="-">
+      <option value="pélvico">Suelo pélvico</option>
+      <option value="linfático">Drenaje linfático</option>
+      <option value="traumatología">Traumatología</option>
+      <option value="ejercicio">Ejercicio terapéutico</option>
+      <option value="otros">Otros</option>
+    </select><br>
+    <p class="error-msg" *ngIf="especialidadField.hasError('required') && especialidadField.touched">El campo especialidad es obligatorio</p> -->
+
+    <label for="comment">Mensaje</label>
+    <textarea class="form-control" formControlName="comment" name="comment">
+    </textarea>
+    
+    <br>
+
+    <button mat-raised-button type="submit" [disabled]="form.invalid" (click)="addMessage()">Enviar</button>
+
+  </form>
+</div>
+

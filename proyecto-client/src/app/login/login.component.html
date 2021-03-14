@@ -1,0 +1,31 @@
+<div class="container">
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+  
+      
+            <label>Name</label><br>
+            <input class="form-control" type="text" matInput formControlName="name" placeholder="Juanito Perez :3">
+            <mat-error *ngIf="nameField.hasError('invalidname')">
+              Please enter a valid name
+            </mat-error>
+            <mat-error *ngIf="nameField.hasError('required') && nameField.touched">
+              Name is <strong>required</strong>
+            </mat-error><br>
+          
+          <label for="email">Email</label><br>
+          <input  class="form-control" formControlName="email" matInput type="email" name="email"><br>
+          <mat-error *ngIf="emailField.hasError('email')">
+            Please enter a valid email
+          </mat-error>
+          <mat-error *ngIf="nameField.hasError('required') && emailField.touched">
+            Email is <strong>required</strong>
+          </mat-error>
+      
+          <label for="password">Password</label><br>
+          <input class="form-control" formControlName="password" matInput type="password" name="password"><br>
+          <p class="error-msg" *ngIf="passwordField.hasError('required') && passwordField.touched">Password is required</p>
+          <p class="error-msg" *ngIf="passwordField.hasError('minlength')">Password must be at least 7 characters</p>
+  
+      <button mat-raised-button type="submit" [disabled]="form.invalid">Enviar</button>
+  
+    </form>
+  </div>

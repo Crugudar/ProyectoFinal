@@ -1,0 +1,12 @@
+.container{
+    margin:3% auto;
+    width: 40%;
+}
+
+.mat-raised-button{
+    background-color:#44BBA4;
+    margin:auto;
+}
+.error-msg{
+    color: crimson;
+}

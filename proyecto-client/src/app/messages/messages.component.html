@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="column">
+        <h3>Messages</h3>
+        <div *ngFor="let message of messagesNotRead let i=index">
+            <p>{{message.email}}</p>
+            <p>{{message.message}}</p>
+            <button (click)="markAsRead(i, message.id)">Leido</button>
+        </div>
+        <!-- [ngClass]="{ 'pokediv': true, 'selected': i===selectedPokediv, 'hovered':i===hoveredPokediv}"
+        (click)="selectDiv(i, pokemon.url)" (mouseenter)='hoverEnter(i)' (mouseleave)='hoverLeave()'> -->
+    </div>
+    <div class="column">
+        <h3>Read</h3>
+        <div *ngFor="let message of messagesRead let i=index">
+            <p>{{message.email}}</p>
+            <p>{{message.message}}</p>
+            <button (click)="deleteMessage(i, message.id)">Delete</button>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,34 @@
+.navbar{
+    background-color:#fff3d5 ;
+}
+
+.nav-item{
+    font-size: 1rem;
+    margin: 1rem;
+    
+}
+.nav-item>button{
+    background-color: transparent;
+    border: 0px;
+}
+ul{
+    float: right;
+    text-align: center;
+}
+
+.navbar-brand{
+    margin:0rem 2rem;
+    
+}
+.btn{
+    padding: 0.1rem;
+}
+.burgundi{
+    color: #3b0d11;
+    width:90px;
+    height:90px;
+    /* border-radius:50%; */
+}
+
+
+
