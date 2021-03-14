@@ -1,20 +1,25 @@
 <div class="container">
-    <div class="column">
-        <h3>Messages</h3>
+
+    <div class="menu">
+        <div class="option" (click)="displayNew()">Nuevos</div>
+        <div class="option" (click)="displayRead()">Leídos</div>
+    </div>
+    <div *ngIf="this.isDisplayNew===true" class="column">
+        <h3>Nuevos</h3>
         <div *ngFor="let message of messagesNotRead let i=index">
             <p>{{message.email}}</p>
             <p>{{message.message}}</p>
-            <button (click)="markAsRead(i, message.id)">Leido</button>
+            <button (click)="markAsRead(i, message.id)">Marcar como leido</button>
         </div>
         <!-- [ngClass]="{ 'pokediv': true, 'selected': i===selectedPokediv, 'hovered':i===hoveredPokediv}"
         (click)="selectDiv(i, pokemon.url)" (mouseenter)='hoverEnter(i)' (mouseleave)='hoverLeave()'> -->
     </div>
-    <div class="column">
-        <h3>Read</h3>
+    <div *ngIf="this.isDisplayRead===true" class="column">
+        <h3>Leídos</h3>
         <div *ngFor="let message of messagesRead let i=index">
             <p>{{message.email}}</p>
             <p>{{message.message}}</p>
-            <button (click)="deleteMessage(i, message.id)">Delete</button>
+            <button (click)="deleteMessage(i, message.id)">Borrar</button>
         </div>
     </div>
 </div>

@@ -16,6 +16,10 @@ export class MessagesComponent implements OnInit {
 
   readMessage: number;
 
+  isDisplayNew:boolean=false;
+
+  isDisplayRead:boolean=false;
+
   constructor(
     private proyectoService:ProyectoService
   ) { }
@@ -55,6 +59,20 @@ export class MessagesComponent implements OnInit {
     this.proyectoService.delete(id).subscribe(data=>{
       let change=this.messagesRead.splice(index,1);
     });
+  }
+  
+  displayNew(){
+    if(this.isDisplayRead===true){
+      this.isDisplayRead=false;
+    }
+    this.isDisplayNew=true;
+  }
+
+  displayRead(){
+    if(this.isDisplayNew===true){
+      this.isDisplayNew=false;
+    }
+    this.isDisplayRead=true;
   }
 
 }

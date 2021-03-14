@@ -1,9 +1,24 @@
 .container{
     display: flex;
+    width: 100vw;
+    margin-left: 0px;
 
 }
 
+.menu{
+    padding: 10px;
+    border-right: black 3px solid;
+
+}
+
+.option{
+    border:black 1px solid;
+    margin:20px;
+}
+
 .column{
-    width: 50%;
-    text-align: center;
+    width: 30%;
+    margin-left: 20px;
+    border-right: black 3px solid;
+    
 }
