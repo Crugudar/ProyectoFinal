@@ -1,4 +1,4 @@
-<div class="container">
+<div class="algo">
 
     <div class="menu">
         <div class="option" (click)="displayNew()">Nuevos</div>
@@ -9,7 +9,7 @@
         <h3>Nuevos</h3>
         <dl class="example-dl" >
           <ng-container  *ngFor="let message of messagesNotRead let i=index">
-            <div (click)="messageDetails(message.id, i,1)">
+            <div class="burgundi" (click)="messageDetails(message.id, i,1)">
             <dt class="example-dt">{{message.name}}</dt>
             <dd class="example-dd">{{message.email}}</dd>
             </div>
@@ -21,7 +21,7 @@
         <h3>Leídos</h3>
         <dl class="example-dl" >
           <ng-container  *ngFor="let message of messagesRead let i=index">
-            <div (click)="messageDetails(message.id, i,2)">
+            <div class="burgundi" (click)="messageDetails(message.id, i,2)">
             <dt class="example-dt">{{message.name}}</dt>
             <dd class="example-dd">{{message.email}}</dd>
             </div>
@@ -34,8 +34,8 @@
         <h6>{{this.selectedMessage.email}} || {{this.selectedMessage.phone}}</h6>
         <p>{{this.selectedMessage.message}}</p>
 
-        <button *ngIf="this.isDisplayNew===true" (click)="markAsRead(this.selectedMessage.id)">Marcar como leído</button>
-        <button *ngIf="this.isDisplayRead===true" (click)="deleteMessage(this.selectedMessage.id)">Borrar</button>
+        <button *ngIf="this.isDisplayNew===true" class="mat-raised-button" (click)="markAsRead(this.selectedMessage.id)">Marcar como leído</button>
+        <button *ngIf="this.isDisplayRead===true" class="mat-raised-button" (click)="deleteMessage(this.selectedMessage.id)">Borrar</button>
 
     </div>
 </div>
