@@ -1,9 +1,25 @@
 .container{
     display: flex;
+    height: 60vh;
     width: 100vw;
     margin-left: 0px;
 
 }
+
+.example-viewport {
+    height: 100%;
+    width: 30%;
+    
+  }
+  
+  .example-dt {
+    height: 30px;
+    font-weight: bold;
+  }
+  
+  .example-dd {
+    height: 30px;
+  }
 
 .menu{
     padding: 10px;
@@ -21,4 +37,8 @@
     margin-left: 20px;
     border-right: black 3px solid;
     
+}
+
+.message{
+    width:40%;
 }

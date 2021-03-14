@@ -4,23 +4,39 @@
         <div class="option" (click)="displayNew()">Nuevos</div>
         <div class="option" (click)="displayRead()">Leídos</div>
     </div>
-    <div *ngIf="this.isDisplayNew===true" class="column">
+
+    <cdk-virtual-scroll-viewport *ngIf="this.isDisplayNew===true" class="example-viewport" itemSize="60">
         <h3>Nuevos</h3>
-        <div *ngFor="let message of messagesNotRead let i=index">
-            <p>{{message.email}}</p>
-            <p>{{message.message}}</p>
-            <button (click)="markAsRead(i, message.id)">Marcar como leido</button>
-        </div>
-        <!-- [ngClass]="{ 'pokediv': true, 'selected': i===selectedPokediv, 'hovered':i===hoveredPokediv}"
-        (click)="selectDiv(i, pokemon.url)" (mouseenter)='hoverEnter(i)' (mouseleave)='hoverLeave()'> -->
-    </div>
-    <div *ngIf="this.isDisplayRead===true" class="column">
+        <dl class="example-dl" >
+          <ng-container  *ngFor="let message of messagesNotRead let i=index">
+            <div (click)="messageDetails(message.id, i,1)">
+            <dt class="example-dt">{{message.name}}</dt>
+            <dd class="example-dd">{{message.email}}</dd>
+            </div>
+          </ng-container>
+        </dl>
+      </cdk-virtual-scroll-viewport>
+
+    <cdk-virtual-scroll-viewport *ngIf="this.isDisplayRead===true" class="example-viewport" itemSize="60">
         <h3>Leídos</h3>
-        <div *ngFor="let message of messagesRead let i=index">
-            <p>{{message.email}}</p>
-            <p>{{message.message}}</p>
-            <button (click)="deleteMessage(i, message.id)">Borrar</button>
-        </div>
+        <dl class="example-dl" >
+          <ng-container  *ngFor="let message of messagesRead let i=index">
+            <div (click)="messageDetails(message.id, i,2)">
+            <dt class="example-dt">{{message.name}}</dt>
+            <dd class="example-dd">{{message.email}}</dd>
+            </div>
+          </ng-container>
+        </dl>
+      </cdk-virtual-scroll-viewport>
+
+    <div *ngIf="this.selectedMessage!=null" class="message">
+        <h5>{{this.selectedMessage.name}}</h5>
+        <h6>{{this.selectedMessage.email}} || {{this.selectedMessage.phone}}</h6>
+        <p>{{this.selectedMessage.message}}</p>
+
+        <button *ngIf="this.isDisplayNew===true" (click)="markAsRead(this.selectedMessage.id)">Marcar como leído</button>
+        <button *ngIf="this.isDisplayRead===true" (click)="deleteMessage(this.selectedMessage.id)">Borrar</button>
+
     </div>
 </div>
 

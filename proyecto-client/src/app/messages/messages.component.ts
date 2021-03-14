@@ -16,6 +16,10 @@ export class MessagesComponent implements OnInit {
 
   readMessage: number;
 
+  selectedMessage:Message |null;
+
+  selectedIndex:number|null;
+
   isDisplayNew:boolean=false;
 
   isDisplayRead:boolean=false;
@@ -25,6 +29,10 @@ export class MessagesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.makeLists();
+  }
+
+  makeLists(){
     this.proyectoService.messages().subscribe(dataResult => {
       dataResult.forEach(result => {
         let message:Message= new Message(
@@ -36,7 +44,6 @@ export class MessagesComponent implements OnInit {
           result.messageBody
         );
         
-        console.log(result)
         if(message.isRead===true){
           this.messagesRead.push(message);
         }else{
@@ -47,17 +54,49 @@ export class MessagesComponent implements OnInit {
     });
   }
 
-  markAsRead(index:number, id:number){
+  messageDetails(id:number,index:number ,list:number){
+    this.selectedIndex=index;
+
+    if(list===1){
+      let selected=this.messagesNotRead.filter(obj => {
+        return obj.id === id;
+      })
+      this.selectedMessage=selected[0];
+    }else{
+      let selected=this.messagesRead.filter(obj => {
+        return obj.id === id;
+      })
+      this.selectedMessage=selected[0];
+    }
+  }
+
+  markAsRead(id:number){
     this.proyectoService.markAsRead(id).subscribe(data=>{
-      let change=this.messagesNotRead.splice(index,1);
-      this.messagesRead.push(change[0]);
+      if(this.selectedIndex!=null){
+        let change=this.messagesNotRead.splice(this.selectedIndex,1);
+        this.messagesRead.push(change[0]);
+        console.log('index',this.selectedIndex);
+        console.log('not read',this.messagesNotRead);
+        console.log('read',this.messagesRead)
+      }
+
+      this.selectedMessage=null;
+      this.selectedIndex=null;
+      
     });
+
+    
     
   }
 
-  deleteMessage(index:number, id:number){
+  deleteMessage( id:number){
     this.proyectoService.delete(id).subscribe(data=>{
-      let change=this.messagesRead.splice(index,1);
+      if(this.selectedIndex!=null){
+        let change=this.messagesRead.splice(this.selectedIndex,1);
+        console.log(this.messagesRead)
+      }
+      this.selectedMessage=null;
+      this.selectedIndex=null;
     });
   }
   
